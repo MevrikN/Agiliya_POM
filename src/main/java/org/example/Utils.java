@@ -11,6 +11,12 @@ import java.util.Date;
 
 public class Utils extends BasePage {
 
+    //Get Text from elements
+    public static String getTextFromElement(By by){
+      String name = driver.findElement(by).getText();
+        return name;
+    }
+
     //Wait for element to be click-able
     public static void driverWaitsUntilClick(By by, int time)
     {

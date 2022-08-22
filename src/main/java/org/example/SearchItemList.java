@@ -24,16 +24,12 @@ public class SearchItemList extends Utils{
         for (WebElement e : productLocators){
             products.add(e.getText());
         }
-        System.out.println(products);
+        System.out.println("Items listed on page: "+products);
     }
 
     public void click_on_blue_on_product(){
     String color = driver.findElement(_color).getCssValue("background-color");
-    if (color.equalsIgnoreCase("rgba(93, 156, 236, 1)")){
-        driver.findElement(_color).click();
-    }else {
-        System.out.println("can't click on color");
-    }
+
         String[] numbers = color.replace("rgba(", "").replace(")", "").split(",");
         int r = Integer.parseInt(numbers[0].trim());
         int g = Integer.parseInt(numbers[1].trim());
@@ -42,7 +38,13 @@ public class SearchItemList extends Utils{
 
         String hex = "#" + Integer.toHexString(r) + Integer.toHexString(g) + Integer.toHexString(b);
 
-        driver.findElement(_color).click();
+        if (color.equalsIgnoreCase("rgba(93, 156, 236, 1)")){
+            driver.findElement(_color).click();
+        }else {
+            System.out.println("can't click on color");
+        }
+
+        driverWaitsUntilClick(_color,5);
         System.out.println(hex);
         System.out.println(color);
     }
