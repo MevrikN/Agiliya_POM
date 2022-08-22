@@ -5,6 +5,8 @@ import org.testng.Assert;
 
 public class RegistrationSuccess extends Utils{
 
+    By _logoutBtn = By.xpath("//a[contains(text(),'Sign out') and @class='logout']");
+
     public void verify_Registration_Success(){
         driverWaitUrlToBe("http://automationpractice.com/index.php?controller=my-account",5);
         String actitle=titleOfPage();
@@ -14,6 +16,6 @@ public class RegistrationSuccess extends Utils{
 
     public void click_Logout_Btn(){
         //Logout button
-        driverClickOnElement(By.xpath("//a[contains(text(),'Sign out') and @class='logout']"));
+        driverClickOnElement(_logoutBtn);
     }
 }

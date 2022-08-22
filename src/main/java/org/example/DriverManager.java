@@ -7,6 +7,8 @@ import java.time.Duration;
 
 public class DriverManager extends Utils{
 
+    LoadProp loadProp = new LoadProp();
+
 
     public void open_Browser() {
 
@@ -21,7 +23,7 @@ public class DriverManager extends Utils{
         driver.manage().window().maximize();
 
         //Open WebPage
-        driver.get("http://automationpractice.com/index.php");
+        driver.get(loadProp.getProperty("baseUrl"));
 
     }
 
