@@ -18,12 +18,10 @@ public class Utils extends BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(by)).click();
     }
 
-    //wait for url
-    public static void driverWaitUrl(String url, int time)
-    {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
-        wait.until(ExpectedConditions.urlToBe(url));
-    }
+  public static void urlContains(String contains,int time){
+      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+      wait.until(ExpectedConditions.urlContains(contains));
+  }
 
     //URL to be
     public static void driverWaitUrlToBe(String exUrl , int time){
@@ -32,8 +30,7 @@ public class Utils extends BasePage {
     }
 
     //Get text
-    public static String gettext(By by)
-    {
+    public static String gettext(By by) {
         return driver.findElement(by).getText();
     }
 
@@ -54,12 +51,16 @@ public class Utils extends BasePage {
         return formate.format(date);
     }
 
-
     //Wait until Attribute ToBe  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<
     public static void driverAttributeToBe(By by, String attribute, String value, int time)
     {
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(time));
         wait.until(ExpectedConditions.attributeToBe(by,attribute,value));
+    }
+
+    public static String getAttributeValue(By by,String name){
+       String value= driver.findElement(by).getDomAttribute(name);
+        return value;
     }
 
     public static void driverClickOnElement(By by)
@@ -80,8 +81,6 @@ public class Utils extends BasePage {
         Select select = new Select(driver.findElement(by));
         select.selectByValue(value);
     }
-
-
 
 }
 
