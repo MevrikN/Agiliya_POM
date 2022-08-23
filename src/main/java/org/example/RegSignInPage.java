@@ -57,11 +57,6 @@ public class RegSignInPage extends Utils {
     public void login_EmailID(){
          driverSendKeys(_loginEmail,loadProp.getProperty("email"));
         System.out.println("Loged In using :-"+loadProp.getProperty("email"));
-//        String id = registartionDetails.getEmailId();
-//        System.out.println(registartionDetails.getEmailId());
-//      registartionDetails.
-//      driverSendKeys(_loginEmail,id);
-//      System.out.println("Login id: "+id);
     }
 
     //Login Password

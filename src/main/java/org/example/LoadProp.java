@@ -8,7 +8,7 @@ public class LoadProp {
 
     static Properties prop = new Properties();
     static FileInputStream input;
-    static String propertiesFileLocation = "src/test/TestNG/TestConfig.properties";
+    static String propertiesFileLocation = "src/test/PropertyFile/TestConfig.properties";
 
     public String getProperty(String key){
         try {

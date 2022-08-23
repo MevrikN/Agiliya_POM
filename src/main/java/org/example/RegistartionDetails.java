@@ -22,6 +22,7 @@ public class RegistartionDetails extends Utils {
     By _mobileNumber = By.id("phone_mobile");
     By registerBtn = By.xpath("//span[contains(text(),'Register')]");
 
+    //Get email from pre filed
     public String getEmailId (){
         String getEmail = driver.findElement(_getEmail).getDomAttribute("Value");
         System.out.println(getEmail);
@@ -30,136 +31,106 @@ public class RegistartionDetails extends Utils {
 
     //wait for URL
     public void verify_Registration_Details_Url() {
-        urlContains("my-account",5);
+        try {
+            urlContains("account-creation",10);
+
+        }catch(Exception e){
+            titleOfPage().equalsIgnoreCase("508 Resource Limit Is Reached");
+            driver.navigate().refresh();
+        }
     }
+
     //Get Page title
     public void getPageTitle(String exp_title) {
         String actualTitle = titleOfPage();
         Assert.assertEquals(actualTitle, exp_title, "Login - My Store");
     }
+
+    //Radio button
     public void selectRedioBtn(){
         driverClickOnElement(_maleRadioBtn);
     }
+
+    //First name
     public void fName(String firstName){
         driverSendKeys(_firstName,firstName);
     }
+
+    //Last name
     public void lName(String lastName){
         driverSendKeys(_lastName, lastName);
     }
 
+    //Password
     public void password(String password){
         driverSendKeys((_password),password);
     }
+
+    //Day of birth
     public void dayOfBirth(int day){
         selectByIndex(By.id("days"),day);
     }
+
+    //Day of Month
     public void monthOfBirth(int month){
         selectByIndex(By.id("months"),month);
     }
+
+    //Day of Year
     public void yearOfBirth(String year){
         selectByValue(By.id("years"),year);
     }
+
+    //Check boxes
     public void newsLatterBoxes(){
+
         //NewsLatter Check and un-Check
         driverClickOnElement(_newsLatter); //Check
         driverClickOnElement(_newsLatter); //Un check
+
         //Special Offers checkbox
         driverClickOnElement(_specialOffers); //Check
         driverClickOnElement(_specialOffers); //Un check
     }
+
+    //Address line
     public void address(String address){
-        //Address line
         driverSendKeys(_address1,address);
     }
+
+    //City
     public void city(String cityName){
-        //City
         driverSendKeys(_cityName,cityName);
     }
+
+    //State
     public void state(String stateName){
-        //State
         selectByVisibleText(_stateName,stateName);
     }
+
+    //Zip Code
     public void zipCode(String zipCode){
-        //Zip Code
         driverSendKeys(_zipCode,zipCode);
     }
+
+    //Country
     public void country(){
-        //Country
         selectByIndex(_country,1);
     }
+
+    //Additional information
     public void additionalInfo(String anyMassage){
-        //Additional information
         driverSendKeys(_other,anyMassage);
     }
+
+    //Mobile Phone
     public void mobileNum(String mobileNumber){
-        //Mobile Phone
         driverSendKeys(_mobileNumber,mobileNumber);
     }
+
+    //Register button
     public void click_Register_Btn(){
         driverWaitsUntilClick(registerBtn,5);
-    }
-
-    public void fill_all_details() {
-        //Radio Button Male and Female Check
-       // driverClickOnElement(_maleRadioBtn);
-
-        //First name
-        //driverSendKeys(, "Mike");
-        //Keyboard Actions
-
-        //Last name
-       // driverSendKeys(By.id("customer_lastname"), "Tyson");
-        //Keyboard Actions
-
-        //Email Check
-//        String getEmail = driver.findElement(_getEmail).getDomAttribute("value");
-//        System.out.println(getEmail);
-
-        //Password
-//        driverSendKeys(By.id("passwd"),password);
-
-        //Date Of Birth
-        //Day   (By Index)
-//        selectByIndex(By.id("days"),9);
-        //Month  (By Index)
-//        selectByIndex(By.id("months"),12);
-        //Year   (by value)
-//        selectByValue(By.id("years"),"1996");
-
-        //NewsLatter Check and un-Check
-//        driverClickOnElement(By.xpath("//input[contains(@name,\"newsletter\")]")); //Check
-//        driverClickOnElement(By.xpath("//input[contains(@name,\"newsletter\")]")); //Un check
-        //Special Offers checkbox
-//        driverClickOnElement(By.cssSelector("#optin"));
-//        driverClickOnElement(By.cssSelector("#optin"));
-
-        //@@@@@@@@@@@@@@@@@@@@@@@         Address Section     @@@@@@@@@@@@@@@@@@@@@@@@@@@@//
-
-//        //First Name
-//        driverSendKeys(By.xpath("//p[@class=\"required form-group\"]//child::input[@name='firstname']"),"Mike");
-//
-//        //Last Name
-//        driverSendKeys(By.id("lastname"),"Tyson");
-
-        //Address line 1
-        //driverSendKeys(By.name("address1"),"London AB109AB ");
-        //City
-        //driverSendKeys(By.xpath("//p[@class=\"required form-group\"]//following::input[@name='city']"),"London");
-        //State
-        //selectByVisibleText(By.id("id_state"),"Florida");
-
-        //Zip Code
-       // driverSendKeys(By.id("postcode"),"01234");
-
-//        //Country
-//        selectByIndex(By.id("id_country"),1);
-
-        //Additional information
-      //  driverSendKeys(By.id("other"),"Enter any Text if you want.");
-
-        //Mobile Phone
-        //driverSendKeys(By.id("phone_mobile"),"+44 1234567890");
-
     }
 
 }
