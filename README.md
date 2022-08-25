@@ -1,4 +1,4 @@
-# Agiliya_POM
+# Agiliya_Page Object Model
 
 This Repository contains:-
 1.Registration Functionality
